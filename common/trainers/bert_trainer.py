@@ -128,4 +128,5 @@ class BertTrainer(object):
                     self.early_stop = True
                     tqdm.write("Early Stopping. Epoch: {}, Best Dev F1: {}".format(epoch, self.best_dev_f1))
                     break
-            print('loss', self.tr_loss, flush=True)
+            print(datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
+            print('loss', self.tr_loss, '\n', flush=True)
