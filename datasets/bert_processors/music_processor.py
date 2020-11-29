@@ -25,6 +25,7 @@ class MUSICProcessor(BertProcessor):
         examples = []
         for (i, line) in enumerate(lines):
             if i == 0:
+                print(line)
                 continue
             guid = "%s-%s" % (set_type, i)
             text_a = line[1]
