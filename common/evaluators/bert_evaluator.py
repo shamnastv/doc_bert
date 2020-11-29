@@ -30,7 +30,7 @@ class BertEvaluator(object):
         else:
             self.eval_examples = self.processor.get_dev_examples(args.data_dir)
 
-    def get_scores(self, silent=True):
+    def get_scores(self, silent=True, dev_acc=0):
         if self.args.is_hierarchical:
             eval_features = convert_examples_to_hierarchical_features(
                 self.eval_examples, self.args.max_seq_length, self.tokenizer)
@@ -97,6 +97,6 @@ class BertEvaluator(object):
         avg_loss = total_loss / nb_eval_steps
 
         if self.split == 'test':
-            save_test_labels(predicted_labels)
+            save_test_labels(predicted_labels, dev_acc)
 
         return [accuracy, precision, recall, f1, avg_loss], ['accuracy', 'precision', 'recall', 'f1', 'avg_loss']
