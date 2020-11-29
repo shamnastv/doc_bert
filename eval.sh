@@ -4,7 +4,7 @@
 #SBATCH --time=2:00:00 # Time limit hrs:min:sec
 #SBATCH --output=test_job%j.out # Standard output and error log
 #SBATCH --gres=gpu:4
-#SBATCH --partition=cl2_2h-4G
+#SBATCH --partition=cl1_2h-4G
 
 #printf "min freq 1\n"
 
