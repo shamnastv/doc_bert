@@ -8,6 +8,7 @@ from transformers import AdamW, BertForSequenceClassification, BertTokenizer, Wa
 from common.constants import *
 from common.evaluators.bert_evaluator import BertEvaluator
 from common.trainers.bert_trainer import BertTrainer
+from datasets.bert_processors import music_processor
 from datasets.bert_processors.aapd_processor import AAPDProcessor
 from datasets.bert_processors.agnews_processor import AGNewsProcessor
 from datasets.bert_processors.imdb_processor import IMDBProcessor
@@ -49,7 +50,8 @@ if __name__ == '__main__':
         'AAPD': AAPDProcessor,
         'AGNews': AGNewsProcessor,
         'Yelp2014': Yelp2014Processor,
-        'Sogou': SogouProcessor
+        'Sogou': SogouProcessor,
+        'music': music_processor
     }
 
     if args.gradient_accumulation_steps < 1:
