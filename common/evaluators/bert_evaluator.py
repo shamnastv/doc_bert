@@ -12,6 +12,8 @@ from datasets.bert_processors.abstract_processor import convert_examples_to_feat
 from utils.preprocessing import pad_input_matrix
 
 # Suppress warnings from sklearn.metrics
+from utils.save_outputs import save_test_labels
+
 warnings.filterwarnings('ignore')
 
 
@@ -21,6 +23,7 @@ class BertEvaluator(object):
         self.model = model
         self.processor = processor
         self.tokenizer = tokenizer
+        self.split = split
 
         if split == 'test':
             self.eval_examples = self.processor.get_test_examples(args.data_dir)
@@ -92,5 +95,8 @@ class BertEvaluator(object):
         recall = metrics.recall_score(target_labels, predicted_labels, average='micro')
         f1 = metrics.f1_score(target_labels, predicted_labels, average='micro')
         avg_loss = total_loss / nb_eval_steps
+
+        if self.split == 'test':
+            save_test_labels(predicted_labels)
 
         return [accuracy, precision, recall, f1, avg_loss], ['accuracy', 'precision', 'recall', 'f1', 'avg_loss']
