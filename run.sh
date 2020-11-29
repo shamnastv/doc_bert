@@ -8,7 +8,7 @@
 
 #printf "min freq 1\n"
 
-python3 -m models.bert --dataset music --model bert-base-uncased --max-seq-length 600 --batch-size 16 --lr 2e-5 --epochs 5
+python3 -m models.bert --dataset music --model bert-base-uncased --max-seq-length 512 --batch-size 16 --lr 1e-5 --epochs 5
 #python3 -m models.bert --dataset music --model bert-large-uncased --max-seq-length 256 --batch-size 16 --lr 2e-5 --epochs 5
 
 
