@@ -112,9 +112,9 @@ class BertTrainer(object):
             tqdm.write(self.log_template.format(epoch + 1, self.iterations, epoch + 1, self.args.epochs,
                                                 dev_acc, dev_precision, dev_recall, dev_f1, dev_loss))
 
-            print(self.log_header)
+            print(self.log_header, flush=True)
             print(self.log_template.format(epoch + 1, self.iterations, epoch + 1, self.args.epochs,
-                                                dev_acc, dev_precision, dev_recall, dev_f1, dev_loss))
+                                                dev_acc, dev_precision, dev_recall, dev_f1, dev_loss), flush=True)
 
             # Update validation results
             if dev_f1 > self.best_dev_f1:
@@ -128,4 +128,4 @@ class BertTrainer(object):
                     self.early_stop = True
                     tqdm.write("Early Stopping. Epoch: {}, Best Dev F1: {}".format(epoch, self.best_dev_f1))
                     break
-            print('loss', self.tr_loss)
+            print('loss', self.tr_loss, flush=True)
