@@ -108,9 +108,9 @@ class BertTrainer(object):
             dev_acc, dev_precision, dev_recall, dev_f1, dev_loss = dev_evaluator.get_scores()[0]
 
             # Print validation results
-            tqdm.write(self.log_header)
-            tqdm.write(self.log_template.format(epoch + 1, self.iterations, epoch + 1, self.args.epochs,
-                                                dev_acc, dev_precision, dev_recall, dev_f1, dev_loss))
+            # tqdm.write(self.log_header)
+            # tqdm.write(self.log_template.format(epoch + 1, self.iterations, epoch + 1, self.args.epochs,
+            #                                     dev_acc, dev_precision, dev_recall, dev_f1, dev_loss))
 
             print(self.log_header, flush=True)
             print(self.log_template.format(epoch + 1, self.iterations, epoch + 1, self.args.epochs,
