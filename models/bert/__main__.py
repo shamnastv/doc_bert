@@ -8,10 +8,10 @@ from transformers import AdamW, BertForSequenceClassification, BertTokenizer, Wa
 from common.constants import *
 from common.evaluators.bert_evaluator import BertEvaluator
 from common.trainers.bert_trainer import BertTrainer
-from datasets.bert_processors import music_processor
 from datasets.bert_processors.aapd_processor import AAPDProcessor
 from datasets.bert_processors.agnews_processor import AGNewsProcessor
 from datasets.bert_processors.imdb_processor import IMDBProcessor
+from datasets.bert_processors.music_processor import MUSICProcessor
 from datasets.bert_processors.reuters_processor import ReutersProcessor
 from datasets.bert_processors.sogou_processor import SogouProcessor
 from datasets.bert_processors.sst_processor import SST2Processor
@@ -51,7 +51,7 @@ if __name__ == '__main__':
         'AGNews': AGNewsProcessor,
         'Yelp2014': Yelp2014Processor,
         'Sogou': SogouProcessor,
-        'music': music_processor
+        'music': MUSICProcessor
     }
 
     if args.gradient_accumulation_steps < 1:

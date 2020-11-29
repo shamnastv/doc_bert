@@ -3,9 +3,9 @@ import os
 from datasets.bert_processors.abstract_processor import BertProcessor, InputExample
 
 
-class IMDBProcessor(BertProcessor):
+class MUSICProcessor(BertProcessor):
     NAME = 'music'
-    NUM_CLASSES = 10
+    NUM_CLASSES = 5
     IS_MULTILABEL = False
 
     def get_train_examples(self, data_dir):
