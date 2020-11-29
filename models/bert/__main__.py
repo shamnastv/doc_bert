@@ -23,7 +23,7 @@ def evaluate_split(model, processor, tokenizer, args, split='dev'):
     evaluator = BertEvaluator(model, processor, tokenizer, args, split)
     accuracy, precision, recall, f1, avg_loss = evaluator.get_scores(silent=True)[0]
     print('\n' + LOG_HEADER)
-    print(LOG_TEMPLATE.format(split.upper(), accuracy, precision, recall, f1, avg_loss))
+    print(LOG_TEMPLATE.format(split.upper(), accuracy, precision, recall, f1, avg_loss), flush=True)
 
 
 if __name__ == '__main__':
