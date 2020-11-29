@@ -21,7 +21,7 @@ from models.bert.args import get_args
 
 def evaluate_split(model, processor, tokenizer, args, split='dev', dev_acc=0):
     evaluator = BertEvaluator(model, processor, tokenizer, args, split)
-    accuracy, precision, recall, f1, avg_loss = evaluator.get_scores(silent=True)[0]
+    accuracy, precision, recall, f1, avg_loss = evaluator.get_scores(silent=True, dev_acc=dev_acc)[0]
     print('\n' + LOG_HEADER)
     print(LOG_TEMPLATE.format(split.upper(), accuracy, precision, recall, f1, avg_loss), flush=True)
     return accuracy
