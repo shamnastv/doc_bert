@@ -28,8 +28,8 @@ new_data = []
 for i in range(len(doc_list)):
     new_data.append(label_list[i] + '\t' + doc_list[i] + '\n')
 
-train_file = open("data/train.tsv", "w")
-dev_file = open("data/dev.tsv", "w")
+train_file = open("train.tsv", "w")
+dev_file = open("dev.tsv", "w")
 train_count = 0
 dev_count = 0
 for i in range(len(new_data)):
@@ -74,7 +74,7 @@ new_data = []
 for i in range(len(doc_list)):
     new_data.append(label_list[i] + '\t' + doc_list[i] + '\n')
 
-test_file = open("data/test.tsv", "w")
+test_file = open("test.tsv", "w")
 test_count = 0
 for i in range(len(new_data)):
     test_file.write(new_data[i])
