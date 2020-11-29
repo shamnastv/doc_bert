@@ -38,7 +38,7 @@ class BertTrainer(object):
         self.early_stop = False
 
     def train_epoch(self, train_dataloader):
-        for step, batch in enumerate(tqdm(train_dataloader, desc="Training")):
+        for step, batch in enumerate(tqdm(train_dataloader, desc="Training", disable=True)):
             self.model.train()
             batch = tuple(t.to(self.args.device) for t in batch)
             input_ids, input_mask, segment_ids, label_ids = batch
@@ -102,7 +102,7 @@ class BertTrainer(object):
         train_sampler = RandomSampler(train_data)
         train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=self.args.batch_size)
 
-        for epoch in trange(int(self.args.epochs), desc="Epoch"):
+        for epoch in trange(int(self.args.epochs), desc="Epoch", disable=True):
             self.train_epoch(train_dataloader)
             dev_evaluator = BertEvaluator(self.model, self.processor, self.tokenizer, self.args, split='dev')
             dev_acc, dev_precision, dev_recall, dev_f1, dev_loss = dev_evaluator.get_scores()[0]
@@ -110,6 +110,10 @@ class BertTrainer(object):
             # Print validation results
             tqdm.write(self.log_header)
             tqdm.write(self.log_template.format(epoch + 1, self.iterations, epoch + 1, self.args.epochs,
+                                                dev_acc, dev_precision, dev_recall, dev_f1, dev_loss))
+
+            print(self.log_header)
+            print(self.log_template.format(epoch + 1, self.iterations, epoch + 1, self.args.epochs,
                                                 dev_acc, dev_precision, dev_recall, dev_f1, dev_loss))
 
             # Update validation results
@@ -124,3 +128,4 @@ class BertTrainer(object):
                     self.early_stop = True
                     tqdm.write("Early Stopping. Epoch: {}, Best Dev F1: {}".format(epoch, self.best_dev_f1))
                     break
+            print('loss', self.tr_loss)

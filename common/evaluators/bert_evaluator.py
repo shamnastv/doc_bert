@@ -30,7 +30,7 @@ class BertEvaluator(object):
         else:
             self.eval_examples = self.processor.get_dev_examples(args.data_dir)
 
-    def get_scores(self, silent=False):
+    def get_scores(self, silent=True):
         if self.args.is_hierarchical:
             eval_features = convert_examples_to_hierarchical_features(
                 self.eval_examples, self.args.max_seq_length, self.tokenizer)
